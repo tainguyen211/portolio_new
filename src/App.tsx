@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import SplashScreen from './components/SplashScreen';
+import { SplashScreen } from './components/SplashScreen';
 import SEOHead from './components/SEOHead';
 import ProjectSchema from './components/ProjectSchema';
 import Navigation from './components/Navigation';
