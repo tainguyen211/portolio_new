@@ -1,173 +1,685 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { User, Sparkles, Code, Zap, CheckCircle } from 'lucide-react';
-import { easeOutCubic } from '../utils/animations';
-import { ANIMATION_DURATIONS } from '../constants';
-import type { LoadingStep } from '../types';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-interface SplashScreenProps {
-  onComplete: () => void;
+/* Theme Variables */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
 }
 
-const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+}
 
-  const loadingSteps: LoadingStep[] = [
-    { text: 'Initializing portfolio...', icon: Sparkles },
-    { text: 'Loading components...', icon: Code },
-    { text: 'Setting up interface...', icon: User },
-    { text: 'Optimizing performance...', icon: Zap },
-    { text: 'Ready to showcase!', icon: CheckCircle }
-  ];
+/* Enhanced global styles */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-  const animateProgress = useCallback(() => {
-    let animationId: number;
-    let startTime: number;
-    const duration = parseInt(ANIMATION_DURATIONS.SPLASH);
+body {
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progressPercent = Math.min((elapsed / duration) * 100, 100);
-      
-      const easedProgress = easeOutCubic(progressPercent / 100) * 100;
-      setProgress(easedProgress);
-      
-      const stepIndex = Math.min(
-        Math.floor((easedProgress / 100) * loadingSteps.length),
-        loadingSteps.length - 1
-      );
-      setCurrentStep(stepIndex);
+/* Remove duplicate animations and optimize existing ones */
+/* Performance-optimized animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 
-      if (progressPercent < 100) {
-        animationId = requestAnimationFrame(animate);
-      } else {
-        setTimeout(() => {
-          setIsVisible(false);
-          setTimeout(onComplete, 400);
-        }, 300);
-      }
-    };
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
-  }, [onComplete, loadingSteps.length]);
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 
-  useEffect(() => {
-    const cleanup = animateProgress();
-    setIsMounted(true);
-    return cleanup;
-  }, [animateProgress]);
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.9, 0.9, 1);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
 
-  // Ensure proper rendering on mobile
-  if (!isMounted) {
-    return (
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 z-[9999] flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
-      </div>
-    );
+@keyframes float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 3D Card animations */
+@keyframes aurora-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(30px, -30px, 0) rotate(1deg);
+  }
+  66% {
+    transform: translate3d(-20px, 20px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes aurora-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-30px, -20px, 0) rotate(2deg);
+  }
+}
+
+@keyframes aurora-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(20px, -40px, 0) rotate(-1deg);
+  }
+  75% {
+    transform: translate3d(-40px, 20px, 0) rotate(1deg);
+  }
+}
+
+@keyframes idle-wobble {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+/* Enhanced card effects with GPU acceleration */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(0, 0, 0);
+  will-change: transform, box-shadow;
+}
+
+.card-hover:hover {
+  transform: translate3d(0, -8px, 0) scale3d(1.02, 1.02, 1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Card utilities */
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Optimized button effects */
+/* Enhanced button effects */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(0, 0, 0);
+  will-change: transform, box-shadow;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+.btn-enhanced:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-enhanced:active {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Optimized navigation */
+/* Navigation enhancements */
+.nav-enhanced {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .nav-enhanced {
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Optimized mobile menu */
+/* Mobile menu */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 40;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Optimized skill tags */
+/* Skill tag animations */
+.skill-tag {
+  transition: all 0.3s ease;
+  cursor: default;
+  will-change: transform, box-shadow;
+}
+
+.skill-tag:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Simplified timeline */
+/* Timeline enhancements */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  transform: translateX(-50%);
+}
+
+/* Optimized animations with better performance */
+/* Animation classes with GPU acceleration */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.animate-idle-wobble {
+  animation: idle-wobble 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-1 {
+  animation: aurora-1 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-2 {
+  animation: aurora-2 25s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-3 {
+  animation: aurora-3 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Optimized intersection observer animations */
+/* Intersection observer animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Optimized form styling */
+/* Enhanced form styling */
+input, textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+input:hover, textarea:hover {
+  border-color: #60a5fa;
+}
+
+/* Optimized scrollbar */
+/* Custom scrollbar with gradient */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* Enhanced selection */
+::selection {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+  color: var(--text-primary);
+}
+
+/* Mobile optimizations */
+/* Responsive optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Remove hover effects on mobile */
+  .card-hover:hover,
+  .card-hover:active {
+    transform: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-enhanced {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .btn-enhanced:hover,
+  .btn-enhanced:active {
+    transform: none;
+  }
+  
+  /* Reduce animations on mobile for better performance */
+  .animate-float {
+    animation-duration: 4s;
+  }
+  
+  /* Optimize backdrop blur for mobile */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Improve mobile menu performance */
+  .mobile-menu-overlay {
+    backdrop-filter: blur(3px);
   }
 
-  if (!isVisible) {
-    return (
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 z-[9999] opacity-0 transition-opacity duration-400 pointer-events-none" />
-    );
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  /* Optimize mobile navigation */
+  .nav-enhanced {
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Reduce particle count on mobile */
+  .particle-background {
+    display: none;
+  }
+  
+  /* Disable 3D effects on mobile for performance */
+  .preserve-3d {
+    transform-style: flat;
+  }
+  
+  .backface-hidden {
+    backface-visibility: visible;
+  }
+  
+  /* Simplify aurora on mobile */
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3 {
+    animation: none;
   }
 
-  const CurrentIcon = loadingSteps[currentStep]?.icon || Sparkles;
+  /* Disable parallax on mobile */
+  .parallax-container {
+    transform: none !important;
+  }
 
-  return (
-    <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 z-[9999] flex items-center justify-center min-h-screen">
-      {/* Optimized background particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: window.innerWidth < 768 ? 8 : 15 }, (_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
-            style={{
-              left: `${(i * 7) % 100}%`,
-              top: `${(i * 11) % 100}%`,
-              animationDelay: `${(i * 0.3) % 3}s`,
-              animationDuration: `${3 + (i % 3)}s`
-            }}
-          />
-        ))}
-      </div>
+  /* Remove 3D effects on mobile */
+  .card-3d,
+  .preserve-3d {
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+  }
 
-      <div className="text-center relative z-10 max-w-md mx-auto px-4 w-full">
-        {/* Main logo */}
-        <div className="relative mb-8">
-          <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm p-1 animate-scaleIn">
-            <div className="w-full h-full rounded-full bg-white/90 flex items-center justify-center relative overflow-hidden">
-              <CurrentIcon 
-                size={window.innerWidth < 768 ? 24 : 32} 
-                className="text-blue-600 transition-all duration-500 ease-in-out" 
-              />
-            </div>
-          </div>
-          
-          <div className="absolute -top-2 -right-2 animate-float">
-            <Sparkles className="text-yellow-300" size={16} />
-          </div>
-          <div className="absolute -bottom-2 -left-2 animate-float" style={{ animationDelay: '1s' }}>
-            <Sparkles className="text-pink-300" size={12} />
-          </div>
-        </div>
+  /* Better spacing for mobile */
+  .hero-section {
+    padding-top: 6rem;
+  }
 
-        {/* Brand */}
-        <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 animate-fadeInUp">
-          Tài Nguyễn
-        </h1>
-        <p className="text-white/80 text-base md:text-lg mb-6 md:mb-8 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-          Portfolio
-        </p>
+  /* Optimize text sizes for mobile */
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
 
-        {/* Loading step */}
-        <div className="mb-4 md:mb-6 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
-          <p className="text-white/90 text-xs md:text-sm font-medium mb-2 transition-all duration-300 min-h-[20px]">
-            {loadingSteps[currentStep]?.text || 'Loading...'}
-          </p>
-        </div>
+  .hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
 
-        {/* Enhanced progress bar */}
-        <div className="w-full max-w-xs mx-auto animate-fadeInUp px-4" style={{ animationDelay: '0.6s' }}>
-          <div className="relative h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
-            <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-white via-yellow-300 to-white rounded-full transition-all duration-100 ease-out shadow-lg"
-              style={{ width: `${progress}%` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse rounded-full" />
-            </div>
-          </div>
-          
-          <div className="flex justify-between items-center mt-3">
-            <span className="text-white/60 text-xs font-medium">
-              {Math.round(progress)}%
-            </span>
-            <span className="text-white/60 text-xs hidden md:inline">
-              {currentStep + 1}/{loadingSteps.length}
-            </span>
-          </div>
-        </div>
+  /* Fix mobile viewport */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
 
-        {/* Animated dots */}
-        <div className="flex items-center justify-center space-x-1 mt-4 md:mt-6 animate-fadeInUp" style={{ animationDelay: '0.8s' }}>
-          {Array.from({ length: 3 }, (_, i) => (
-            <div
-              key={i}
-              className="w-2 h-2 bg-white/60 rounded-full animate-bounce"
-              style={{ 
-                animationDelay: `${i * 0.2}s`,
-                animationDuration: '1s'
-              }}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 
-export default SplashScreen;
+  /* Prevent zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 16px !important;
+    transform: none !important;
+  }
+
+  /* Fix mobile loading screen */
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /* Ensure proper mobile rendering */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Mobile device specific optimizations */
+.mobile-device .animate-float,
+.mobile-device .animate-pulse-slow {
+  animation-duration: 2s;
+}
+
+.mobile-device .card-hover::before,
+.mobile-device .btn-enhanced::before {
+  display: none;
+}
+
+.mobile-device .card-hover:hover {
+  transform: none !important;
+}
+
+.mobile-device .btn-enhanced:hover {
+  transform: none !important;
+}
+
+/* Low power mode optimizations */
+.low-power-mode .animate-float,
+.low-power-mode .animate-pulse-slow,
+.low-power-mode .animate-idle-wobble,
+.low-power-mode .animate-aurora-1,
+.low-power-mode .animate-aurora-2,
+.low-power-mode .animate-aurora-3 {
+  animation: none !important;
+}
+
+.low-power-mode .particle-background,
+.low-power-mode .aurora-background {
+  display: none !important;
+}
+
+/* Remove unused animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Reduced motion optimizations */
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.reduce-motion .card-hover:hover,
+.reduce-motion .btn-enhanced:hover {
+  transform: none !important;
+}
+
+/* Accessibility improvements */
+/* Enhanced focus indicators */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Form validation improvements */
+/* Form validation styles */
+.form-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.form-success {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Accessibility: Reduced motion support */
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-float,
+  .animate-pulse-slow {
+    animation: none !important;
+  }
+  
+  .animate-idle-wobble,
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3 {
+    animation: none !important;
+  }
+}
+
+/* Accessibility: High contrast support */
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .bg-gradient-to-r {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+  }
+}
+
+/* Print optimizations */
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Global performance optimizations */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove unused CSS */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  transform: translateX(-50%);
+}
+
+/* Optimize transitions for better performance */
+.transition-colors {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Fix mobile viewport issues */
