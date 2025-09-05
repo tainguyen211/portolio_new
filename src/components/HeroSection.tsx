@@ -3,7 +3,7 @@ import { Mail, Download, Github, Phone, Globe, ChevronDown, User, Sparkles } fro
 import TypewriterText from './ui/TypewriterText';
 import ParticleBackground from './ui/ParticleBackground';
 import ParallaxContainer from './ui/ParallaxContainer';
-import AnimatedAvatar from './ui/AnimatedAvatar';
+import { AnimatedAvatar } from './ui/AnimatedAvatar';
 import AuroraBackground from './ui/AuroraBackground';
 import PowerAwareContainer from './ui/PowerAwareContainer';
 
