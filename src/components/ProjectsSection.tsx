@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProjectCard } from './ui/ProjectCard';
-import { SectionHeader } from './ui/SectionHeader';
+import SectionHeader from './ui/SectionHeader';
 
 interface Project {
   id: string;
