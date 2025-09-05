@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LoadingSpinner } from './ui/LoadingSpinner';
+import LoadingSpinner from './ui/LoadingSpinner';
 
 interface SplashScreenProps {
   onComplete: () => void;
