@@ -1,0 +1,77 @@
+[
+  {
+    "company": "HACOM (HANOI COMPUTER)",
+    "position": {
+      "en": "Backend Developer",
+      "vi": "Lập Trình Viên Backend"
+    },
+    "period":{
+      "en": "Sep 2024 – Feb 2025",
+      "vi": "Tháng 09/2024 – Tháng 02/2025"
+    },
+    
+    "description": {
+      "en": "Developed and optimized backend systems for transaction management and data integration.",
+      "vi": "Phát triển và tối ưu hóa hệ thống backend cho quản lý giao dịch và tích hợp dữ liệu."
+    },
+    "achievements": {
+      "en": [
+        "Researched internal systems and frameworks for seamless integration",
+        "Designed and implemented CRUD APIs for transaction management",
+        "Built data filtering, searching, and synchronization features",
+        "Created APIs for Excel import/export and custom reporting",
+        "Integrated APIs for external business partner data sharing",
+        "Optimized database queries and schema for improved performance"
+      ],
+      "vi": [
+        "Nghiên cứu hệ thống nội bộ và framework để tích hợp liền mạch",
+        "Thiết kế và triển khai CRUD APIs cho quản lý giao dịch",
+        "Xây dựng tính năng lọc dữ liệu, tìm kiếm và đồng bộ hóa",
+        "Tạo APIs cho import/export Excel và báo cáo tùy chỉnh",
+        "Tích hợp APIs để chia sẻ dữ liệu với đối tác kinh doanh bên ngoài",
+        "Tối ưu hóa truy vấn cơ sở dữ liệu và schema để cải thiện hiệu suất"
+      ]
+    },
+    "techStack": ["Microservices", "CQRS Pattern", "C#"]
+  },
+  {
+    "company": "VIETSENS",
+    "position": {
+      "en": "Software Deployment",
+      "vi": "Triển Khai Phần Mềm"
+    },
+    "period":{
+      "en": "Apr 2025 – Jul 2025",
+      "vi": "Tháng 04/2025 – Tháng 07/2025"
+    } ,
+    "location": {
+      "en": "General Hospital of Viet Yen (Bac Giang) & Ba Be District Health Center",
+      "vi": "Bệnh viện Đa khoa Việt Yên (Bắc Giang) & Trung tâm Y tế huyện Ba Bể"
+    },
+    "description": {
+      "en": " Deployment and training for Hospital Information System across multiple healthcare facilities.",
+      "vi": "Triển khai và đào tạo Hệ thống Thông tin Bệnh viện tại nhiều cơ sở y tế."
+    },
+    "achievements": {
+      "en": [
+    "Deployed the Hospital Information System (HIS) across multiple departments.",
+    "Trained and supported doctors, nurses, and administrative staff on HIS usage and best practices.",
+    "Configured user accounts, department structure, drug lists, and medical inventory data.",
+    "Assisted with data entry and validated data volumes to meet project deadlines.",
+    "Customized print templates (exam forms, prescriptions, lab reports) to hospital requirements.",
+    "Collected user feedback and collaborated with developers to resolve technical issues.",
+    "Provided post-deployment support via helpdesk"
+  ],
+  "vi": [
+    "Triển khai Hệ thống Thông tin Bệnh viện (HIS) trên nhiều khoa/phòng.",
+    "Đào tạo và hỗ trợ bác sĩ, điều dưỡng và nhân viên hành chính sử dụng HIS và các thực hành tốt.",
+    "Cấu hình tài khoản người dùng, cơ cấu khoa phòng, danh mục thuốc và dữ liệu tồn kho y tế.",
+    "Hỗ trợ nhập liệu và kiểm tra khối lượng dữ liệu để kịp tiến độ dự án.",
+    "Tùy chỉnh mẫu in (phiếu khám, đơn thuốc, kết quả xét nghiệm) theo yêu cầu bệnh viện.",
+    "Thu thập phản hồi người dùng và phối hợp với đội phát triển để xử lý vấn đề kỹ thuật.",
+    "Cung cấp hỗ trợ sau triển khai qua helpdesk"
+  ]
+    },
+    "techStack": ["HIS", "Healthcare Systems", "User Training"]
+  }
+]

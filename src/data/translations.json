@@ -1,0 +1,126 @@
+{
+  "en": {
+    "name": "Nguyễn Công Khánh Tài",
+    "title": "Backend Developer & Software Engineer",
+    "subtitle": "gamer, coder, designer, creator",
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "buttons": {
+      "getInTouch": "Get In Touch",
+      "downloadCV": "Download CV"
+    },
+    "about": {
+      "title": "About Me",
+      "subtitle": "Backend Developer → Deployments → Helpdesk → System Admin",
+      "education": "Education",
+      "location": "Location"
+    },
+    "experience": {
+      "title": "Experience",
+      "subtitle": "My professional journey in software development"
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "subtitle": "Some of my recent work and personal projects",
+      "keyFeatures": "Key Features:",
+      "buttons": {
+        "code": "Code",
+        "demo": "Demo"
+      }
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "subtitle": "Let's discuss opportunities and collaborate on exciting projects",
+      "info": "Contact Information",
+      "form": {
+        "title": "Send a Message",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send Message",
+        "placeholders": {
+          "name": "Your name",
+          "email": "your.email@example.com",
+          "message": "Your message..."
+        }
+      }
+    },
+    "footer": {
+      "description": "Backend Developer",
+      "rights": "."
+    },
+    "skills": {
+      "languages": "Programming Languages",
+      "frameworks": "Frameworks & Tools",
+      "frameworksLabel": "Frameworks",
+      "toolsLabel": "Developer Tools"
+    }
+  },
+  "vi": {
+    "name": "Nguyễn Công Khánh Tài",
+    "title": "Lập Trình Viên Backend & Kỹ Sư Phần Mềm",
+    "subtitle": "gamer, coder, designer, creator",
+    "nav": {
+      "home": "Trang Chủ",
+      "about": "Giới Thiệu",
+      "experience": "Kinh Nghiệm",
+      "projects": "Dự Án",
+      "contact": "Liên Hệ"
+    },
+    "buttons": {
+      "getInTouch": "Liên Hệ Ngay",
+      "downloadCV": "Tải CV"
+    },
+    "about": {
+      "title": "Giới Thiệu",
+      "subtitle": "Backend Developer → Deployments → Helpdesk → System Admin",
+      "education": "Học Vấn",
+      "location": "Địa Điểm"
+    },
+    "experience": {
+      "title": "Kinh Nghiệm",
+      "subtitle": "Hành trình nghề nghiệp của tôi trong phát triển phần mềm"
+    },
+    "projects": {
+      "title": "Dự Án Nổi Bật",
+      "subtitle": "Một số công việc gần đây và dự án cá nhân của tôi",
+      "keyFeatures": "Tính Năng Chính:",
+      "buttons": {
+        "code": "code",
+        "demo": "Demo"
+      }
+    },
+    "contact": {
+      "title": "Liên Hệ",
+      "subtitle": "Hãy thảo luận về cơ hội và hợp tác trong các dự án thú vị",
+      "info": "Thông Tin Liên Hệ",
+      "form": {
+        "title": "Gửi Tin Nhắn",
+        "name": "Tên",
+        "email": "Email",
+        "message": "Tin Nhắn",
+        "send": "Gửi Tin Nhắn",
+        "placeholders": {
+          "name": "Tên của bạn",
+          "email": "email.cua.ban@example.com",
+          "message": "Tin nhắn của bạn..."
+        }
+      }
+    },
+    "footer": {
+      "description": "Lập trình viên Backend ",
+      "rights": "."
+    },
+    "skills": {
+      "languages": "Ngôn Ngữ Lập Trình",
+      "frameworks": "Framework & Công Cụ",
+      "frameworksLabel": "Framework",
+      "toolsLabel": "Công Cụ Phát Triển"
+    }
+  }
+}

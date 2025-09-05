@@ -1,0 +1,84 @@
+[
+  {
+    "title": "Personal Profile Website",
+    "description": {
+      "en": "Personal profile website with quick social links, flexible configuration, mobile-first design, multilanguage support, smooth animations, and an integrated music player.",
+      "vi": "Website hồ sơ cá nhân với liên kết mạng xã hội nhanh, cấu hình linh hoạt, thiết kế mobile-first, hỗ trợ đa ngôn ngữ, hoạt ảnh mượt mà và trình phát nhạc tích hợp."
+    },
+    "features": {
+      "en": [
+        "Dark/Light theme toggle with user preference persistence",
+        "Music player with full controls and playlist support",
+        "Mobile-first responsive design with smooth animations",
+        "Internationalization with react-i18next",
+        "Optimized performance with Vite build system"
+      ],
+      "vi": [
+        "Chuyển đổi chủ đề Tối/Sáng với lưu trữ tùy chọn người dùng",
+        "Trình phát nhạc với điều khiển đầy đủ và hỗ trợ playlist",
+        "Thiết kế responsive mobile-first với hoạt ảnh mượt mà",
+        "Quốc tế hóa với react-i18next",
+        "Hiệu suất tối ưu với hệ thống build Vite"
+      ]
+    },
+    "techStack": ["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "i18next"],
+    "github": "https://github.com/taitai2107/prf_config",
+    "demo": "https://tainguyen-profile.is-a.dev/",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop"
+  },
+  {
+    "title": "Expense Management Bot",
+    "description": {
+      "en": "Telegram bot for personal finance tracking with monthly reports, Excel import/export, and spam prevention.",
+      "vi": "Bot Telegram để theo dõi tài chính cá nhân với báo cáo hàng tháng, import/export Excel và ngăn chặn spam."
+    },
+    "features": {
+      "en": [
+        "Secure account creation using Telegram IDs",
+        "Monthly financial reporting with detailed summaries",
+        "Excel import/export functionality for data management",
+        "Redis-based user state management",
+        "Rate limiting and spam prevention",
+        "Containerized deployment with Docker"
+      ],
+      "vi": [
+        "Tạo tài khoản bảo mật bằng Telegram ID",
+        "Báo cáo tài chính hàng tháng với tóm tắt chi tiết",
+        "Chức năng import/export Excel để quản lý dữ liệu",
+        "Quản lý trạng thái người dùng dựa trên Redis",
+        "Giới hạn tốc độ và ngăn chặn spam",
+        "Triển khai container hóa với Docker"
+      ]
+    },
+    "techStack": ["Node.js", "Redis", "MySQL", "Docker", "Telegram API"],
+    "github": "https://github.com/taitai2107/expense-management-bot",
+    "demo": "https://youtu.be/kecPBSeIgmA",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop"
+  },
+  {
+    "title": "Electronics Selling Website",
+    "description": {
+      "en": "E-commerce website for electronics with focus on backend services and performance optimization.",
+      "vi": "Website thương mại điện tử cho thiết bị điện tử với trọng tâm vào dịch vụ backend và tối ưu hóa hiệu suất."
+    },
+    "features": {
+      "en": [
+        "RESTful APIs for product and user management",
+        "MySQL database design and optimization",
+        "Redis caching for improved performance",
+        "Modular backend architecture",
+        "Comprehensive product catalog system"
+      ],
+      "vi": [
+        "RESTful APIs cho quản lý sản phẩm và người dùng",
+        "Thiết kế và tối ưu hóa cơ sở dữ liệu MySQL",
+        "Redis caching để cải thiện hiệu suất",
+        "Kiến trúc backend modular",
+        "Hệ thống danh mục sản phẩm toàn diện"
+      ]
+    },
+    "techStack": ["Vue.js", "Node.js", "MySQL", "Redis"],
+    "github": "https://github.com/taitai2107/Electro-Shop",
+    "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop"
+  }
+]

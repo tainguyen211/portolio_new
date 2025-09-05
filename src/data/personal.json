@@ -1,0 +1,27 @@
+{
+  "name": "Nguyễn Công Khánh Tài",
+  "email": "tainguyencongkhanh@gmail.com",
+  "phone": "0832 597 839",
+  "github": "https://github.com/taitai2107",
+  "portfolio": "https://tainguyen-profile.is-a.dev",
+  "location": {
+    "en": "HaNoi - Vietnam",
+    "vi": "Hà Nội - Việt Nam"
+  },
+  "education": {
+    "university": "Dai Nam University",
+    "degree": {
+      "en": "Bachelor of Information Technology",
+      "vi": "Cử nhân Công nghệ Thông tin"
+    },
+    "graduationDate": {
+      "en": "Graduated Jul 2024",
+      "vi": "Tốt nghiệp Tháng 7/2024"
+    }
+  },
+  "skills": {
+    "languages": ["TypeScript", "JavaScript", "C#", "SQL (MySQL)"],
+    "frameworks": ["ASP.NET Core", "Node.js", "React", "Vue.js"],
+    "tools": ["Git", "Docker", "Nvim", "VS Code", "WebStorm", "Rider", "Redis", "Linux", "CLI"]
+  }
+}
