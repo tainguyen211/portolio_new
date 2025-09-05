@@ -11,7 +11,7 @@ interface AnimatedAvatarProps {
 const AnimatedAvatar: React.FC<AnimatedAvatarProps> = ({ 
   size = 'lg', 
   className = '',
-  showStatus = true 
+  showStatus = false // Tắt status ring
 }) => {
   const { getStatusEmoji, getStatusColor, shouldPulse } = useWorkStatus();
 
@@ -52,21 +52,10 @@ const AnimatedAvatar: React.FC<AnimatedAvatarProps> = ({
       </div>
 
       {/* Status ring */}
-      {showStatus && (
-        <div className={`absolute -inset-1 rounded-full ${getStatusColor()} ${shouldPulse() ? 'animate-ping' : ''}`} 
-             style={{ zIndex: -1 }}>
-          <div className={`w-full h-full rounded-full ${getStatusColor()}`} />
-        </div>
-      )}
+      {/* Status ring removed */}
 
       {/* Status indicator with emoji */}
-      {showStatus && (
-        <div className={`absolute -bottom-1 -right-1 ${statusSizes[size]} ${getStatusColor()} rounded-full flex items-center justify-center border-2 border-white dark:border-gray-900 ${shouldPulse() ? 'animate-pulse' : ''} group-hover:scale-110 transition-transform duration-300`}>
-          <span className="text-xs leading-none">
-            {getStatusEmoji()}
-          </span>
-        </div>
-      )}
+      {/* Status indicator removed */}
 
       {/* Floating sparkles */}
       <div className="absolute -top-1 -right-1 animate-float">

@@ -46,7 +46,7 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
   return (
     <div
       ref={cardRef}
-      className="relative w-full fade-in-section group"
+      className="relative w-full h-full fade-in-section group"
       style={{ 
         animationDelay: `${index * 0.2}s`,
         transformStyle: isMobile ? 'flat' : 'preserve-3d'
@@ -54,7 +54,7 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
       onMouseMove={!isMobile ? handleMouseMove : undefined}
       onMouseLeave={!isMobile ? handleMouseLeave : undefined}
     >
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden ring-0 hover:ring-4 hover:ring-blue-500/20 transition-all duration-300 relative group/card"
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden ring-0 hover:ring-4 hover:ring-blue-500/20 transition-all duration-300 relative group/card h-full flex flex-col"
            style={cardStyle}>
         {/* Project image with overlay effects */}
         <div className="h-48 md:h-56 relative overflow-hidden">
@@ -81,13 +81,13 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
           </div>
         </div>
         
-        <div className="p-4 md:p-6">
+        <div className="p-4 md:p-6 flex-1 flex flex-col">
           <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm md:text-base">
             {project.description[language as keyof typeof project.description]}
           </p>
           
           {/* Key Features - Mobile only */}
-          <div className="mb-4 md:mb-6">
+          <div className="mb-4 md:mb-6 flex-1">
             <h4 className="font-bold text-base md:text-lg mb-3">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {translations.projects.keyFeatures}
@@ -128,7 +128,7 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
             </div>
           </div>
           
-          <div className="flex space-x-3">
+          <div className="flex space-x-3 mt-auto">
             <a
               href={project.github}
               target="_blank"

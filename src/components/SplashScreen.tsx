@@ -12,6 +12,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   const loadingSteps: LoadingStep[] = [
     { text: 'Initializing portfolio...', icon: Sparkles },
@@ -56,8 +57,18 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
   useEffect(() => {
     const cleanup = animateProgress();
+    setIsMounted(true);
     return cleanup;
   }, [animateProgress]);
+
+  // Ensure proper rendering on mobile
+  if (!isMounted) {
+    return (
+      <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 z-[9999] flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   if (!isVisible) {
     return (
@@ -68,10 +79,10 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   const CurrentIcon = loadingSteps[currentStep]?.icon || Sparkles;
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 z-[9999] flex items-center justify-center">
+    <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 z-[9999] flex items-center justify-center min-h-screen">
       {/* Optimized background particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 15 }, (_, i) => (
+        {Array.from({ length: window.innerWidth < 768 ? 8 : 15 }, (_, i) => (
           <div
             key={i}
             className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
@@ -85,13 +96,13 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         ))}
       </div>
 
-      <div className="text-center relative z-10 max-w-md mx-auto px-6">
+      <div className="text-center relative z-10 max-w-md mx-auto px-4 w-full">
         {/* Main logo */}
         <div className="relative mb-8">
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm p-1 animate-scaleIn">
+          <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm p-1 animate-scaleIn">
             <div className="w-full h-full rounded-full bg-white/90 flex items-center justify-center relative overflow-hidden">
               <CurrentIcon 
-                size={32} 
+                size={window.innerWidth < 768 ? 24 : 32} 
                 className="text-blue-600 transition-all duration-500 ease-in-out" 
               />
             </div>
@@ -106,22 +117,22 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Brand */}
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 animate-fadeInUp">
+        <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 animate-fadeInUp">
           Tài Nguyễn
         </h1>
-        <p className="text-white/80 text-lg mb-8 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+        <p className="text-white/80 text-base md:text-lg mb-6 md:mb-8 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
           Portfolio
         </p>
 
         {/* Loading step */}
-        <div className="mb-6 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
-          <p className="text-white/90 text-sm font-medium mb-2 transition-all duration-300 min-h-[20px]">
+        <div className="mb-4 md:mb-6 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
+          <p className="text-white/90 text-xs md:text-sm font-medium mb-2 transition-all duration-300 min-h-[20px]">
             {loadingSteps[currentStep]?.text || 'Loading...'}
           </p>
         </div>
 
         {/* Enhanced progress bar */}
-        <div className="w-full max-w-xs mx-auto animate-fadeInUp" style={{ animationDelay: '0.6s' }}>
+        <div className="w-full max-w-xs mx-auto animate-fadeInUp px-4" style={{ animationDelay: '0.6s' }}>
           <div className="relative h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
             <div 
               className="absolute inset-y-0 left-0 bg-gradient-to-r from-white via-yellow-300 to-white rounded-full transition-all duration-100 ease-out shadow-lg"
@@ -135,14 +146,14 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             <span className="text-white/60 text-xs font-medium">
               {Math.round(progress)}%
             </span>
-            <span className="text-white/60 text-xs">
+            <span className="text-white/60 text-xs hidden md:inline">
               {currentStep + 1}/{loadingSteps.length}
             </span>
           </div>
         </div>
 
         {/* Animated dots */}
-        <div className="flex items-center justify-center space-x-1 mt-6 animate-fadeInUp" style={{ animationDelay: '0.8s' }}>
+        <div className="flex items-center justify-center space-x-1 mt-4 md:mt-6 animate-fadeInUp" style={{ animationDelay: '0.8s' }}>
           {Array.from({ length: 3 }, (_, i) => (
             <div
               key={i}

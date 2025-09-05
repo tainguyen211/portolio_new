@@ -42,13 +42,14 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projectsData.map((project, index) => (
-            <ProjectCard3D
-              key={index}
-              project={project}
-              translations={translations}
-              language={language}
-              index={index}
-            />
+            <div key={index} className="h-full">
+              <ProjectCard3D
+                project={project}
+                translations={translations}
+                language={language}
+                index={index}
+              />
+            </div>
           ))}
         </div>
       </div>
